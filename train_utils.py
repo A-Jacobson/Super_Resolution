@@ -72,13 +72,6 @@ def fit(model, train, criterion, optimizer, batch_size=32,
             print("[loss: {:.4f} ]".format(loss))
     return history
 
-# def step(loader):
-#     for data, target in loader:
-#         data = Variable(data.cuda())
-#         target = Variable(target.cuda())
-#         output = model(data)
-#         return output
-
 
 def validate(model, val_loader, criterion):
     model.eval()
@@ -99,7 +92,4 @@ def save_checkpoint(model_state, optimizer_state, filename, epoch=None, is_best=
     torch.save(state, filename)
     if is_best:
         copyfile(filename, 'model_best.pth.tar')
-
-def load_checkpoint(filename, epoch=None):
-    torch.load(filename)
 
